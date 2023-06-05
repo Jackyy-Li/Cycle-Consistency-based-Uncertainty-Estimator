@@ -2,7 +2,7 @@
 
 ![Paper Banner](docs/TOB.png)
 
-This repository contains the code for implementing the cycle inference process and detecting out-of-distribution data using our Cycle Consistency-based Uncertainty Quantification method. For more details, refer to our [paper](https://arxiv.org/abs/2305.12852). <br>
+This repository contains the code for implementing the cycle inference process and detecting out-of-distribution data using our Cycle Consistency-based Uncertainty Quantification method. For more details, refer to our [paper](https://arxiv.org/abs/2305.12852). `<br>`
 
 **Paper:** [Cycle Consistency-based Uncertainty Quantification of Neural Networks in Inverse Imaging Problems](https://arxiv.org/abs/2305.12852)
 
@@ -13,7 +13,7 @@ This repository contains the code for implementing the cycle inference process a
 - [Hanlong Chen](https://arxiv.org/search/cs?searchtype=author&query=Chen%2C+H)
 - [Aydogan Ozcan](https://arxiv.org/search/cs?searchtype=author&query=Ozcan%2C+A)
 
-> UCLA<br>
+> UCLA `<br>`
 > Submitted to Nature Communications
 
 <br>
@@ -28,8 +28,8 @@ Our method employs a unique approach to quantify uncertainty in deep neural netw
 First, download our repo:
 
 ```bash
-git clone https://github.com/Jackyy-Li/CCUQ.git
-cd CCUQ
+git clone https://github.com/Jackyy-Li/Cycle-Consistency-based-Uncertainty-Estimator.git
+cd Cycle-Consistency-based-Uncertainty-Estimator
 ```
 
 For an express instillation, we include ``requirements.txt`` file.
@@ -54,7 +54,7 @@ We used cycle number = 20 as the default number. Quicker results can be obtained
 
 ### Derive Uncertainty Estimators
 
-Change wk_paths to the directory of output result. The following command will then use uncertainty_quant_alt.py to derive the uncertainty estimators:
+The following command will then use uncertainty_quant_alt.py to derive the uncertainty estimators:
 
 ```bash
 python uncertainty_quant_alt.py
@@ -62,7 +62,7 @@ python uncertainty_quant_alt.py
 
 ### Use XGBoost Classifier with uncertainty estimators
 
-Use OODDetection_test.ipynb to perform out-of-distribution detection on the result.
+"OODDetection_test.ipynb" contains the code to perform out-of-distribution detection on the result. Please change the code accordingly for your result. 
 
 <img src='docs/uncertainty_estimators.png' width=600>
 
