@@ -22,6 +22,7 @@ wk_dir = r'H:\GOPRO_Large\test\GOPR0410_11_00'
 inputds = glob.glob(wk_dir+r'\blur_09_s=19_i=0.25_n=0.03')
 targetd = wk_dir+r'\sharp'
 
+
 # testing parameters
 parser = argparse.ArgumentParser(description='Image Deblurring')
 # parser.add_argument('--input_dir', default=inputd, type=str, help='Directory of validation images')
@@ -41,7 +42,6 @@ os.environ["CUDA_VISIBLE_DEVICES"] = args.gpus
 
 # traverse all input folders
 for inputd in inputds:
-
     args.input_dir = inputd
     s_input = inputd.split('\\')
     # load kernel
@@ -72,8 +72,6 @@ for inputd in inputds:
     # forward model
     model_forward = forward_model.BlurModel(args.kernel)
 
-    # dataset = args.dataset
-    # rgb_dir_test = args.input_dir
     test_dataset = get_test_data(args.input_dir, args.target_dir, img_options={})
     test_loader  = DataLoader(dataset=test_dataset, batch_size=1, shuffle=False, drop_last=False, pin_memory=True)
     psnr_val_rgb = []

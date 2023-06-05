@@ -16,13 +16,13 @@ def min_max_norm(x):
     x = (x - x.min()) / (x.max() - x.min())
     return x
 
+
 parser = argparse.ArgumentParser(description='Image Deblurring')
 parser.add_argument('--input_dir', default='H:\\GOPRO_Large\\test\\GOPR0410_11_00\\sharp', type=str, help='Directory of validation images')
 args = parser.parse_args()
 
 
 # list of TEST kernels
-
 ker_names = ['ker_07_s=19_i=0.75.png','ker_09_s=19_i=0.25.png',
                 'ker_00_s=38_i=0.75.png','ker_07_s=57_i=0.50.png']
 noise_list = [0.03]
@@ -31,6 +31,7 @@ noise_list = [0.03]
 # traverse thru all kernels & noise levels
 # sharp_img_files = glob.glob(os.path.join(args.input_dir, '*.png'))
 sharp_img_files = glob.glob(os.path.join(args.input_dir, '*.png'))
+
 for (ker, n) in itertools.product(ker_names, noise_list):
     # load kernel and set noise level
     args.noise = n
