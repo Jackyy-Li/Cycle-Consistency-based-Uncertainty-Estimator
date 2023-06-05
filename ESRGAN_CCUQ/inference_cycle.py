@@ -15,8 +15,8 @@ from basicsr.archs.rrdbnet_arch import RRDBNet
 from basicsr.utils.download_util import load_file_from_url
 from realesrgan import RealESRGANer
 from realesrgan.archs.srvgg_arch import SRVGGNetCompact
-from ESRGAN_CCUQ.Pooling import Cycle
-from DeepRFT_utils import noise, random_crop
+from Pooling import Cycle
+from utils import noise, random_crop
 
 
 def main():
