@@ -4,7 +4,7 @@ import glob
 import torch.nn as nn
 import torch
 from torch.utils.data import DataLoader
-import ReepRFT_utils
+import DeepRFT_utils
 from DeepRFT.data_RGB import get_test_data
 from DeepRFT.DeepRFT_MIMO import DeepRFT as mynet
 from skimage import img_as_ubyte
@@ -63,7 +63,7 @@ for inputd in inputds:
     # print number of model
     get_parameter_number(model_restoration)
     # utils.load_checkpoint(model_restoration, args.weights)
-    ReepRFT_utils.load_checkpoint_compress_doconv(model_restoration, args.weights)
+    DeepRFT_utils.load_checkpoint_compress_doconv(model_restoration, args.weights)
     print("===>Testing using weights: ", args.weights)
     model_restoration.cuda()
     model_restoration = nn.DataParallel(model_restoration)
@@ -77,7 +77,7 @@ for inputd in inputds:
     psnr_val_rgb = []
     psnr = 0
 
-    ReepRFT_utils.mkdir(result_dir)
+    DeepRFT_utils.mkdir(result_dir)
 
     with torch.no_grad():
         psnr_list = []
@@ -116,8 +116,8 @@ for inputd in inputds:
                     restored_img = img_as_ubyte(restored[batch])
 
                     if args.save_result:
-                        ReepRFT_utils.save_img((os.path.join(result_dir, filenames[batch]+'_%d.png'%i)), restored_img)
+                        DeepRFT_utils.save_img((os.path.join(result_dir, filenames[batch]+'_%d.png'%i)), restored_img)
             test_tar = img_as_ubyte(test_tar.squeeze().permute(1,2,0).cpu().detach().numpy())
-            ReepRFT_utils.save_img((os.path.join(result_dir, filenames[batch]+'_target.png')), test_tar)
+            DeepRFT_utils.save_img((os.path.join(result_dir, filenames[batch]+'_target.png')), test_tar)
             sio.savemat(os.path.join(result_dir, filenames[batch]+'.mat'), {'xx_list':xx_list, 'im_list':im_list, 'yy':test_tar})
 

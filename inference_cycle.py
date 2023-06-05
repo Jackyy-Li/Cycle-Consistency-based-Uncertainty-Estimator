@@ -16,7 +16,7 @@ from basicsr.utils.download_util import load_file_from_url
 from realesrgan import RealESRGANer
 from realesrgan.archs.srvgg_arch import SRVGGNetCompact
 from Pooling import Cycle
-from ReepRFT_utils import noise, random_crop
+from DeepRFT_utils import noise, random_crop
 
 
 def main():

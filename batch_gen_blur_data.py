@@ -9,7 +9,7 @@ import glob
 import argparse
 import PIL
 import matplotlib.pyplot as plt
-import ReepRFT_utils
+import DeepRFT_utils
 
 
 def min_max_norm(x):
