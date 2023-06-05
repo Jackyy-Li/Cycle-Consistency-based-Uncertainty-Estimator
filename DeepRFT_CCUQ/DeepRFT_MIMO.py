@@ -1,4 +1,4 @@
-from DeepRFT.layers import *
+from DeepRFT_CCUQ.layers import *
 
 
 

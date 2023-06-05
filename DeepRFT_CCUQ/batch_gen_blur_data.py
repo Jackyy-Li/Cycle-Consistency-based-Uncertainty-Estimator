@@ -1,15 +1,16 @@
 import os
+os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 import re
 import random
 import itertools
-import DeepRFT.forward_model as forward_model
+import DeepRFT_CCUQ.forward_model as forward_model
 import numpy as np
 import scipy.ndimage
 import glob
 import argparse
 import PIL
 import matplotlib.pyplot as plt
-import DeepRFT_utils
+import DeepRFT_CCUQ.DeepRFT_utils
 
 
 def min_max_norm(x):

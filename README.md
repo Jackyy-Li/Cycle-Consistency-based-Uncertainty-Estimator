@@ -1,8 +1,8 @@
 # Cycle Consistency-based Uncertainty Quantification of Neural Networks in Inverse Imaging Problems
 
-![Paper Banner](docs/TOB.png)
-
 This repository contains the code for implementing the cycle inference process and detecting out-of-distribution data using our Cycle Consistency-based Uncertainty Quantification method. For more details, refer to our [paper](https://arxiv.org/abs/2305.12852).
+
+![Paper Banner](docs/TOB.png)
 
 **Paper:** [Cycle Consistency-based Uncertainty Quantification of Neural Networks in Inverse Imaging Problems](https://arxiv.org/abs/2305.12852)
 
@@ -13,8 +13,9 @@ This repository contains the code for implementing the cycle inference process a
 - [Hanlong Chen](https://arxiv.org/search/cs?searchtype=author&query=Chen%2C+H)
 - [Aydogan Ozcan](https://arxiv.org/search/cs?searchtype=author&query=Ozcan%2C+A)
 
-> UCLA`<br>`
-> Submitted to Nature Communications
+> UCLA
+>
+> Submitted to Nature Computational Science
 
 <br>
 Uncertainty estimation is critical for numerous real-world applications of deep neural networks and draws growing attention from researchers.
@@ -40,18 +41,27 @@ Run the following command to install all the dependencies needed:
 pip install -r requirements.txt
 ```
 
-### Implementing Cycle Inference Process
+## Out-of-Distribution Detection Experiment 
 
-Use inference_cycle.py to implement cycle inference process using average pooling algorithm as physical forward model and REAL-ESRGAN network as trained neural work.
+The out-of-distribution detection task uses average pooling algorithm as physical forward model and REAL-ESRGAN network as trained neural work. 
 
-The following command will execute cycle inference process for cycle number=20 on 'input' directory and save the output image and .mat file needed to derive uncertainty estimators in 'output' directory :
+The following guidance shows the process for the out-of-distribution experiment:
+
+```bash
+cd ESRGAN_CCUQ
+```
+
+### Implement Cycle Inference Process
+
+Use inference_cycle.py to implement cycle inference process. 
+
+The following command will execute cycle inference process for cycle number=5 on 'input' directory and save the output image and .mat file needed to derive uncertainty estimators in 'output' directory :
 
 ```bash
 python inference_cycle.py -i ".\input\demo" -o ".\output\demo" -cn 5
 ```
 
 We used cycle number = 20 as the default number. Quicker results can be obtained through using a lesser cycle number.
-
 ### Derive Uncertainty Estimators
 
 The following command will then use uncertainty_quant_alt.py to derive the uncertainty estimators:
@@ -66,9 +76,40 @@ python uncertainty_quant_alt.py
 
 <img src='docs/uncertainty_estimators.png' width=600>
 
+
+## Corrupted Input Detection Experiment 
+
+The corrupted input detection experiment uses motion blur kernel as physical forward model and DeepRFT model as trained neural network. 
+
+### Generate Blurred data 
+
+
+### Implement Cycle Inference Process
+
+Use inference_cycle.py to implement cycle inference process. 
+
+The following command will execute cycle inference process for cycle number=5 on 'input' directory and save the output image and .mat file needed to derive uncertainty estimators in 'output' directory :
+
+```bash
+python inference_cycle.py -i ".\input\demo" -o ".\output\demo" -cn 5
+```
+
+### Derive Uncertainty Estimators 
+
+The following command will then use uncertainty_quant_alt.py to derive the uncertainty estimators:
+
+```bash
+python uncertainty_quant_alt.py
+```
+
+### Use XGBoost Classifier with uncertainty estimators 
+
+
+
+
+
 ## Acknowledgements
 
-<br>
 
 ## Related Work
 

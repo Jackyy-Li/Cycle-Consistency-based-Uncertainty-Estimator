@@ -1,4 +1,4 @@
-from DeepRFT.dataset_RGB import *
+from DeepRFT_CCUQ.dataset_RGB import *
 
 
 def get_training_data(rgb_dir, img_options):
