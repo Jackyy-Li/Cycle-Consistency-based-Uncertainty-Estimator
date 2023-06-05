@@ -2,7 +2,8 @@
 
 ![Paper Banner](docs/TOB.png)
 
-This repository contains the code for implementing the cycle inference process and detecting out-of-distribution data using our Cycle Consistency-based Uncertainty Quantification method. For more details, refer to our [paper](https://arxiv.org/abs/2305.12852). `<br>`
+This repository contains the code for implementing the cycle inference process and detecting out-of-distribution data using our Cycle Consistency-based Uncertainty Quantification method. For more details, refer to our [paper](https://arxiv.org/abs/2305.12852). 
+
 
 **Paper:** [Cycle Consistency-based Uncertainty Quantification of Neural Networks in Inverse Imaging Problems](https://arxiv.org/abs/2305.12852)
 
@@ -13,7 +14,7 @@ This repository contains the code for implementing the cycle inference process a
 - [Hanlong Chen](https://arxiv.org/search/cs?searchtype=author&query=Chen%2C+H)
 - [Aydogan Ozcan](https://arxiv.org/search/cs?searchtype=author&query=Ozcan%2C+A)
 
-> UCLA `<br>`
+> UCLA
 > Submitted to Nature Communications
 
 <br>
@@ -62,7 +63,7 @@ python uncertainty_quant_alt.py
 
 ### Use XGBoost Classifier with uncertainty estimators
 
-"OODDetection_test.ipynb" contains the code to perform out-of-distribution detection on the result. Please change the code accordingly for your result. 
+"OOD_detection.ipynb" contains the code to perform out-of-distribution detection on the result. Please change the code accordingly for your result. 
 
 <img src='docs/uncertainty_estimators.png' width=600>
 

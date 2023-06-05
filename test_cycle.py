@@ -4,17 +4,17 @@ import torch.nn as nn
 import torch
 from torch.utils.data import DataLoader
 import CCUQ.utils as utils
-from data_RGB import get_test_data
-from DeepRFT_MIMO import DeepRFT as mynet
+from DeepRFT.data_RGB import get_test_data
+from DeepRFT.DeepRFT_MIMO import DeepRFT as mynet
 from skimage import img_as_ubyte
-from get_parameter_number import get_parameter_number
+from DeepRFT.get_parameter_number import get_parameter_number
 from tqdm import tqdm
-from layers import *
+from DeepRFT.layers import *
 from skimage.metrics import peak_signal_noise_ratio as psnr_loss
 import cv2
 import PIL
 import scipy.io as sio
-import forward_model
+import DeepRFT.forward_model as forward_model
 
 
 # testing parameters
