@@ -4,18 +4,18 @@ import glob
 import torch.nn as nn
 import torch
 from torch.utils.data import DataLoader
-import DeepRFT_CCUQ.DeepRFT_utils as DeepRFT_utils
-from DeepRFT_CCUQ.data_RGB import get_test_data
-from DeepRFT_CCUQ.DeepRFT_MIMO import DeepRFT as mynet
+import DeepRFT_utils as DeepRFT_utils
+from data_RGB import get_test_data
+from DeepRFT_MIMO import DeepRFT as mynet
 from skimage import img_as_ubyte
-from DeepRFT_CCUQ.get_parameter_number import get_parameter_number
+from get_parameter_number import get_parameter_number
 from tqdm import tqdm
-from DeepRFT_CCUQ.layers import *
+from layers import *
 from skimage.metrics import peak_signal_noise_ratio as psnr_loss
 import cv2
 import PIL
 import scipy.io as sio
-import DeepRFT_CCUQ.forward_model as forward_model
+import forward_model as forward_model
 
 wk_dir = r'H:\GOPRO_Large\test\GOPR0410_11_00'
 inputds = glob.glob(wk_dir+r'\blur_09_s=19_i=0.25_n=0.03')
@@ -33,7 +33,7 @@ parser.add_argument('--gpus', default='0', type=str, help='CUDA_VISIBLE_DEVICES'
 parser.add_argument('--save_result', default=True, type=bool, help='save result')
 parser.add_argument('--win_size', default=256, type=int, help='window size, [GoPro, HIDE, RealBlur]=256, [DPDD]=512')
 parser.add_argument('--num_res', default=8, type=int, help='num of resblocks, [Small, Med, PLus]=[4, 8, 20]')
-parser.add_argument('--max_cycles', default=20, type=int, help='num of restoration-forward cycles')
+parser.add_argument('--max_cycles', default=5, type=int, help='num of restoration-forward cycles')
 args = parser.parse_args()
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
 os.environ["CUDA_VISIBLE_DEVICES"] = args.gpus

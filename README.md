@@ -41,9 +41,14 @@ Run the following command to install all the dependencies needed:
 pip install -r requirements.txt
 ```
 
-## Out-of-Distribution Detection Experiment 
+### Datasets
 
-The out-of-distribution detection task uses average pooling algorithm as physical forward model and REAL-ESRGAN network as trained neural work. 
+- The corrupted input detection experiment uses the [GoPro Dataset](https://paperswithcode.com/dataset/gopro).
+- The out-of-distribution detection experiment uses the [Anime Names and Images dataset](https://www.kaggle.com/datasets/shanmukh05/anime-names-and-image-generation), [Flickr-Faces-HQ dataset](https://github.com/NVlabs/ffhq-dataset), and microscopy datasets (not uploaded due to confidentiality, user could create their training dataset by injecting noise into pristine images of various object classes).
+
+## Out-of-Distribution Detection Experiment
+
+The out-of-distribution detection task uses average pooling algorithm as physical forward model and REAL-ESRGAN network as trained neural work.
 
 The following guidance shows the process for the out-of-distribution experiment:
 
@@ -53,7 +58,7 @@ cd ESRGAN_CCUQ
 
 ### Implement Cycle Inference Process
 
-Use inference_cycle.py to implement cycle inference process. 
+Use inference_cycle.py to implement cycle inference process.
 
 The following command will execute cycle inference process for cycle number=5 on 'input' directory and save the output image and .mat file needed to derive uncertainty estimators in 'output' directory :
 
@@ -62,6 +67,7 @@ python inference_cycle.py -i ".\input\demo" -o ".\output\demo" -cn 5
 ```
 
 We used cycle number = 20 as the default number. Quicker results can be obtained through using a lesser cycle number.
+
 ### Derive Uncertainty Estimators
 
 The following command will then use uncertainty_quant_alt.py to derive the uncertainty estimators:
@@ -76,25 +82,37 @@ python uncertainty_quant_alt.py
 
 <img src='docs/uncertainty_estimators.png' width=600>
 
+## Corrupted Input Detection Experiment
 
-## Corrupted Input Detection Experiment 
+The corrupted input detection experiment uses motion blur kernels as physical forward model and DeepRFT model as trained neural network. Before running the following script, please download GoPro dataset in the above link and follow the procedures below:
 
-The corrupted input detection experiment uses motion blur kernel as physical forward model and DeepRFT model as trained neural network. 
+```bash
+cd DeepRFT_CCUQ
+```
 
-### Generate Blurred data 
+### Generate Blurred data
 
+The blurred kernels used in the experiment are included in the blur_kernel folder. 
+
+The following command blurred sharp images using randomly chosen motion blur kernel
+
+```bash
+python batch_gen_blur_data.py
+```
 
 ### Implement Cycle Inference Process
 
-Use inference_cycle.py to implement cycle inference process. 
+Use batch_test_cycle.py to implement cycle inference process.
 
-The following command will execute cycle inference process for cycle number=5 on 'input' directory and save the output image and .mat file needed to derive uncertainty estimators in 'output' directory :
+The following command will execute cycle inference process for cycle number=5 on 'input' directory and save the output image and .mat file needed to derive uncertainty estimators in 'output' directory. Before using the command, please change the input direcotry and output directory using input argument accordinlgy:
 
 ```bash
-python inference_cycle.py -i ".\input\demo" -o ".\output\demo" -cn 5
+python batch_test_cycle.py
 ```
 
-### Derive Uncertainty Estimators 
+Please change the input directory to your downloaded GoPro datasets accordingly. The default input directory only includes 10 sharp images for demo purposes. 
+
+### Derive Uncertainty Estimators
 
 The following command will then use uncertainty_quant_alt.py to derive the uncertainty estimators:
 
@@ -102,14 +120,11 @@ The following command will then use uncertainty_quant_alt.py to derive the uncer
 python uncertainty_quant_alt.py
 ```
 
-### Use XGBoost Classifier with uncertainty estimators 
+### Use XGBoost Classifier with uncertainty estimators
 
-
-
-
+"corrupt_input_detection.ipynb" contains the code to perform corrupted input detection on the result. The presentation shows the detection accuracy of the different noise level. Please change the code (directory of your result paths) accordingly to generate your own result.
 
 ## Acknowledgements
-
 
 ## Related Work
 

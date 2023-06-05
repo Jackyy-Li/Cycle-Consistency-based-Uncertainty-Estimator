@@ -1,4 +1,4 @@
-from DeepRFT_CCUQ.doconv_pytorch import *
+from doconv_pytorch import *
 
 
 class BasicConv(nn.Module):
