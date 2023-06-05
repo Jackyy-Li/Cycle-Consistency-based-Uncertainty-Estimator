@@ -13,7 +13,7 @@ This repository contains the code for implementing the cycle inference process a
 - [Hanlong Chen](https://arxiv.org/search/cs?searchtype=author&query=Chen%2C+H)
 - [Aydogan Ozcan](https://arxiv.org/search/cs?searchtype=author&query=Ozcan%2C+A)
 
-> UCLA `<br>`
+> UCLA`<br>`
 > Submitted to Nature Communications
 
 <br>
