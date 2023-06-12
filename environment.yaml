@@ -1,0 +1,24 @@
+name: CCUQ
+channels:
+  - defaults
+dependencies:
+  - basicsr==1.4.2
+  - gfpgan==1.3.8
+  - layers==0.1.5
+  - matplotlib==3.7.0
+  - numpy==1.24.3
+  - opencv_python==4.7.0.72
+  - pandas==1.5.3
+  - pytest==7.3.1
+  - scikit_image==0.19.3
+  - scikit_learn==1.2.1
+  - scipy==1.10.0
+  - seaborn==0.12.2
+  - setuptools==65.6.3
+  - tqdm==4.64.1
+  - xgboost==1.7.4
+  - pip:
+      - torch==1.13.1+cu117
+      - torchvision==0.14.1+cu117
+      - Pillow==9.5.0
+      - PyYAML==6.0
