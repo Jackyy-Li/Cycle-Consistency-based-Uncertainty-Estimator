@@ -46,7 +46,6 @@ pip install -r requirements.txt
 - The corrupted input detection experiment uses the [GoPro Dataset](https://paperswithcode.com/dataset/gopro).
 - The out-of-distribution detection experiment uses the [Anime Names and Images dataset](https://www.kaggle.com/datasets/shanmukh05/anime-names-and-image-generation), [Flickr-Faces-HQ dataset](https://github.com/NVlabs/ffhq-dataset), and microscopy datasets (not uploaded due to confidentiality, user could create their training dataset by injecting noise into pristine images of various object classes).
 
-
 ## Out-of-Distribution Detection Experiment
 
 The out-of-distribution detection task uses average pooling algorithm as physical forward model and REAL-ESRGAN network as trained neural work.
@@ -61,10 +60,16 @@ cd ESRGAN_CCUQ
 
 Use inference_cycle.py to implement cycle inference process.
 
-The following command will execute cycle inference process for cycle number=5 on 'input' directory and save the output image and .mat file needed to derive uncertainty estimators in 'output' directory :
+The following command will execute cycle inference process for cycle number=5 on 'input' directory and save the output image and .mat file needed to derive uncertainty estimators in 'output' directory using GPU device 0 :
 
 ```bash
-python inference_cycle.py -i ".\input\demo" -o ".\output\demo" -cn 5
+python inference_cycle.py -i ".\input\demo" -o ".\output\demo" -cn 5 -g 0
+```
+
+Please use the following command if you want to use CPU:
+
+```bash
+python inference_cycle.py -i ".\input\demo" -o ".\output\demo" -cn 5 --fp32
 ```
 
 We used cycle number = 20 as the default number. Quicker results can be obtained through using a lesser cycle number.
@@ -93,7 +98,7 @@ cd DeepRFT_CCUQ
 
 ### Generate Blurred data
 
-The blurred kernels used in the experiment are included in the blur_kernel folder. 
+The blurred kernels used in the experiment are included in the blur_kernel folder.
 
 The following command blurred sharp images using randomly chosen motion blur kernel
 
@@ -111,7 +116,7 @@ The following command will execute cycle inference process for cycle number=5 on
 python batch_test_cycle.py
 ```
 
-Please change the input directory to your downloaded GoPro datasets accordingly. The default input directory only includes 10 sharp images for demo purposes. 
+Please change the input directory to your downloaded GoPro datasets accordingly. The default input directory only includes 10 sharp images for demo purposes.
 
 ### Derive Uncertainty Estimators
 
